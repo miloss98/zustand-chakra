@@ -1,4 +1,5 @@
 import { Box, Flex, Text, HStack, Button, Input } from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { usePeopleStore } from "../peopleStore";
 
@@ -41,20 +42,30 @@ const People = () => {
         return (
           <HStack
             key={id}
-            justify="center"
+            justify="space-between"
             w="80%"
-            bgColor="gray.400"
+            background="white"
             mb="10px"
             h="30px"
             rounded="sm"
           >
-            <Text>{name}</Text>
+            <Text pl="10px">{name}</Text>
             <Button
-              bgColor="red"
-              color="white"
-              onClick={(e) => removePerson(id)}
+              w="30px"
+              h="30px"
+              bg="none"
+              rounded="none"
+              _hover={{
+                background: "none",
+              }}
+              onClick={() => removePerson(id)}
             >
-              X
+              <DeleteIcon
+                color="red"
+                _hover={{
+                  color: "red.400",
+                }}
+              />
             </Button>
           </HStack>
         );
@@ -70,8 +81,8 @@ const People = () => {
           mb="10px"
           size="sm"
           w="80%"
-          borderColor="gray.500"
-          rounded="sm"
+          rounded="md"
+          bgColor="white"
           _hover={{
             borderColor: "gray.400",
           }}
