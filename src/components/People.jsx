@@ -16,14 +16,11 @@ const People = () => {
     if (inputValue.length >= 5) addNewPerson({ name: inputValue });
     clear();
   };
-  //   const handleRemovePerson = (id) => {
-  //     console.log(id);
-  //     removePerson({ id: id });
-  //   };
 
   const people = usePeopleStore((state) => state.people);
   const addNewPerson = usePeopleStore((state) => state.addNewPerson);
   const removePerson = usePeopleStore((state) => state.removePerson);
+  const removeAll = usePeopleStore((state) => state.removeAll);
 
   return (
     <Flex
@@ -78,7 +75,7 @@ const People = () => {
         align="center"
       >
         <Input
-          mb="10px"
+          mb="15px"
           size="sm"
           w="80%"
           rounded="md"
@@ -91,9 +88,19 @@ const People = () => {
           onChange={handleChange}
           placeholder="Enter your full name"
         />
-        <Button size="sm" colorScheme="purple" onClick={handleAddNewPerson}>
-          Add new person
-        </Button>
+        <HStack justify="space-between" w="80%">
+          <Button
+            w="45%"
+            size="sm"
+            colorScheme="purple"
+            onClick={handleAddNewPerson}
+          >
+            Add new person
+          </Button>
+          <Button w="45%" size="sm" colorScheme="red" onClick={removeAll}>
+            Clear all
+          </Button>
+        </HStack>
       </Box>
     </Flex>
   );

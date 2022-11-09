@@ -19,4 +19,5 @@ export const usePeopleStore = create((set) => ({
     set((state) => ({
       people: state.people.filter((person) => person.id !== id),
     })),
+  removeAll: () => set((state) => (state.people = [])),
 }));
