@@ -1,10 +1,16 @@
 import { Flex, HStack, Button, Text } from "@chakra-ui/react";
 import { useMarketStore } from "../marketStore";
+import shallow from "zustand/shallow";
+
 const Market = () => {
-  const value = useMarketStore((state) => state.value);
-  const increment = useMarketStore((state) => state.incrementValue);
-  const decrement = useMarketStore((state) => state.decrementValue);
-  const reset = useMarketStore((state) => state.reset);
+  const { value, increment, decrement, reset } = useMarketStore((state) => ({
+    value: state.value,
+    increment: state.increment,
+    decrement: state.decrement,
+    reset: state.reset,
+    shallow,
+  }));
+
   return (
     <Flex
       bgColor="gray.100"

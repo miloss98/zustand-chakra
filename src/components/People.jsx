@@ -2,6 +2,7 @@ import { Box, Flex, Text, HStack, Button, Input } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { usePeopleStore } from "../peopleStore";
+import shallow from "zustand/shallow";
 
 const People = () => {
   const [inputValue, setInputValue] = useState("");
@@ -17,11 +18,15 @@ const People = () => {
     clear();
   };
 
-  const people = usePeopleStore((state) => state.people);
-  const addNewPerson = usePeopleStore((state) => state.addNewPerson);
-  const removePerson = usePeopleStore((state) => state.removePerson);
-  const removeAll = usePeopleStore((state) => state.removeAll);
-
+  const { people, addNewPerson, removePerson, removeAll } = usePeopleStore(
+    (state) => ({
+      people: state.people,
+      addNewPerson: state.addNewPerson,
+      removePerson: state.removePerson,
+      removeAll: state.removeAll,
+      shallow,
+    })
+  );
   return (
     <Flex
       bgColor="gray.100"
