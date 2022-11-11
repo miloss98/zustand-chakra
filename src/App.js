@@ -1,13 +1,12 @@
 import "./reset.css";
 import { Box, Center, Text } from "@chakra-ui/react";
-//import { useState } from "react";
 import { Market, People } from "./components/index";
+import Fetched from "./components/Fetched";
 
 function App() {
   return (
     <Box
       w="100%"
-      h="100vh"
       display="flex"
       flexDirection="column"
       justifyContent="flex-start"
@@ -23,6 +22,8 @@ function App() {
       <Market />
       {/* People */}
       <People />
+      {/* Fetched data */}
+      <Fetched />
     </Box>
   );
 }
